@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Vidly.Models.Customer>
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
-    ViewBag.Title = "Customer";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,21 +8,21 @@
 
 @if (!Model.Any())
 {
-    <p>we don't currently have any customers.</p>
+    <p>we don't currently have any movies.</p>
 }
 else
 {
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
-            <td>Customer</td>
+            <td>Movie</td>
         </tr>
         </thead>
         <tbody>
-        @foreach (var customer in Model)
+        @foreach (var movie in Model)
         {
             <tr>
-                <td>@Html.ActionLink(customer.Name, "Details", new { customer.Id })</td>
+                <td>@movie.Name</td>
             </tr>
         }
         </tbody>    
