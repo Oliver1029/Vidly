@@ -219,9 +219,34 @@
     <Compile Include="Migrations\202012161044036_AddCustomer.Birthdate.Designer.cs">
       <DependentUpon>202012161044036_AddCustomer.Birthdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012170857040_Add_Genre_ReleaseDate_DateAdded_NumberInStock_ToMovie.cs" />
+    <Compile Include="Migrations\202012170857040_Add_Genre_ReleaseDate_DateAdded_NumberInStock_ToMovie.Designer.cs">
+      <DependentUpon>202012170857040_Add_Genre_ReleaseDate_DateAdded_NumberInStock_ToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012170909226_AddGenreModel.cs" />
+    <Compile Include="Migrations\202012170909226_AddGenreModel.Designer.cs">
+      <DependentUpon>202012170909226_AddGenreModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012170915317_AddGenreModelAgain.cs" />
+    <Compile Include="Migrations\202012170915317_AddGenreModelAgain.Designer.cs">
+      <DependentUpon>202012170915317_AddGenreModelAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012170917532_PopulateGenre.cs" />
+    <Compile Include="Migrations\202012170917532_PopulateGenre.Designer.cs">
+      <DependentUpon>202012170917532_PopulateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012170951379_ChangeGenreIdType.cs" />
+    <Compile Include="Migrations\202012170951379_ChangeGenreIdType.Designer.cs">
+      <DependentUpon>202012170951379_ChangeGenreIdType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012180133240_AddDataNotation.cs" />
+    <Compile Include="Migrations\202012180133240_AddDataNotation.Designer.cs">
+      <DependentUpon>202012180133240_AddDataNotation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -291,6 +316,7 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -341,6 +367,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012161044036_AddCustomer.Birthdate.resx">
       <DependentUpon>202012161044036_AddCustomer.Birthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012170857040_Add_Genre_ReleaseDate_DateAdded_NumberInStock_ToMovie.resx">
+      <DependentUpon>202012170857040_Add_Genre_ReleaseDate_DateAdded_NumberInStock_ToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012170909226_AddGenreModel.resx">
+      <DependentUpon>202012170909226_AddGenreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012170915317_AddGenreModelAgain.resx">
+      <DependentUpon>202012170915317_AddGenreModelAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012170917532_PopulateGenre.resx">
+      <DependentUpon>202012170917532_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012170951379_ChangeGenreIdType.resx">
+      <DependentUpon>202012170951379_ChangeGenreIdType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012180133240_AddDataNotation.resx">
+      <DependentUpon>202012180133240_AddDataNotation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
