@@ -19,9 +19,10 @@ namespace Vidly.Models
         [Required]
         public byte GenreId { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:d}")]
-        //[Display(Name = "Release Date")]
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
 
         [Display(Name = "Date Added")]
