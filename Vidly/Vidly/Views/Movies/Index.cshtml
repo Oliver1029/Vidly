@@ -6,13 +6,9 @@
 
 <h2>Movies</h2>
 
-<div>
-    <a href="@Url.Action("New", "Movies")" class="btn btn-primary">
-        <span>New Movie</span>
-    </a>
-</div>
-<br/>
-
+<p>
+    @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+</p>
 
 @if (!Model.Any())
 {
