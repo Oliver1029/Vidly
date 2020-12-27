@@ -243,6 +243,14 @@
     <Compile Include="Migrations\202012180133240_AddDataNotation.Designer.cs">
       <DependentUpon>202012180133240_AddDataNotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012270157074_ModifyModel.cs" />
+    <Compile Include="Migrations\202012270157074_ModifyModel.Designer.cs">
+      <DependentUpon>202012270157074_ModifyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012270214108_removeRequiredfromBirthday.cs" />
+    <Compile Include="Migrations\202012270214108_removeRequiredfromBirthday.Designer.cs">
+      <DependentUpon>202012270214108_removeRequiredfromBirthday.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -390,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012180133240_AddDataNotation.resx">
       <DependentUpon>202012180133240_AddDataNotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012270157074_ModifyModel.resx">
+      <DependentUpon>202012270157074_ModifyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012270214108_removeRequiredfromBirthday.resx">
+      <DependentUpon>202012270214108_removeRequiredfromBirthday.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
