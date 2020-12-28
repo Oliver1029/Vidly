@@ -51,7 +51,7 @@ namespace Vidly.Controllers.Api
 
             customerDto.Id = customer.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto );
+            return Ok();
         }
 
         // PUT /api/customer/1
@@ -70,13 +70,13 @@ namespace Vidly.Controllers.Api
             
             _context.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + customerInDb.Id), customerDto);
+            return Ok();
 
         }
 
         // DELETE /api/customer/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
@@ -85,6 +85,8 @@ namespace Vidly.Controllers.Api
 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
