@@ -5,6 +5,12 @@
 }
 
 <h2>Customers</h2>
+<ul>
+    @foreach (var customer in Model)
+    {
+        <li>@customer.Name - @customer.MembershipType.Name</li>
+    }
+</ul>
 
 <table id="customers" class="table table-bordered table-hover">
     <thead>

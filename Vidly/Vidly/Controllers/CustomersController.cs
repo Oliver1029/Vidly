@@ -66,9 +66,12 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customers");
         }
 
+        [OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)]
         public ActionResult Index()
         {
-            return View();
+            var customer = _context.Customers.ToList();
+
+            return View(customer);
         }
 
         public ActionResult Details(int id)

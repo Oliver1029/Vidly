@@ -49,12 +49,11 @@
                 ]
             });
 
-            $("#movies").on("click",
-                ".js-delete",
+            $("#movies").on("click", ".js-delete",
                 function () {
                     var button = $(this);
 
-                    if (bootbox.confirm("Are you sure you want to delete this movies?",
+                    bootbox.confirm("Are you sure you want to delete this movies?",
                         function (result) {
                             if (result) {
                                 $.ajax({
@@ -65,7 +64,7 @@
                                     }
                                 });
                             }
-                        }));
+                        });
                 });
         });
     </script>
