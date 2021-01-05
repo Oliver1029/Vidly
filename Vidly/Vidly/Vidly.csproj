@@ -199,14 +199,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -303,6 +306,22 @@
     <Compile Include="Migrations\202012290924254_AddAnnotationToPhone.Designer.cs">
       <DependentUpon>202012290924254_AddAnnotationToPhone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101040851085_modifyRentalFormModel.cs" />
+    <Compile Include="Migrations\202101040851085_modifyRentalFormModel.Designer.cs">
+      <DependentUpon>202101040851085_modifyRentalFormModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101041016045_modifyRentalClass.cs" />
+    <Compile Include="Migrations\202101041016045_modifyRentalClass.Designer.cs">
+      <DependentUpon>202101041016045_modifyRentalClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101050143006_modifyRentalClass1.cs" />
+    <Compile Include="Migrations\202101050143006_modifyRentalClass1.Designer.cs">
+      <DependentUpon>202101050143006_modifyRentalClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101050232315_undoRentalClass.cs" />
+    <Compile Include="Migrations\202101050232315_undoRentalClass.Designer.cs">
+      <DependentUpon>202101050232315_undoRentalClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -313,6 +332,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -320,12 +340,17 @@
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
+    <Compile Include="ViewModels\RentalFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
@@ -443,7 +468,32 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen\composer.json" />
+    <Content Include="Scripts\chosen\LICENSE.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\chosen\chosen-sprite%402x.png" />
+    <Content Include="Scripts\chosen\chosen-sprite.png" />
+    <Content Include="Scripts\chosen\chosen.css" />
+    <Content Include="Scripts\chosen\chosen.jquery.js" />
+    <Content Include="Scripts\chosen\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen\chosen.min.css" />
+    <Content Include="Scripts\chosen\chosen.proto.js" />
+    <Content Include="Scripts\chosen\chosen.proto.min.js" />
+    <Content Include="Scripts\chosen\docsupport\chosen.png" />
+    <Content Include="Scripts\chosen\docsupport\init.js" />
+    <Content Include="Scripts\chosen\docsupport\init.proto.js" />
+    <Content Include="Scripts\chosen\docsupport\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\chosen\docsupport\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\chosen\docsupport\oss-credit.png" />
+    <Content Include="Scripts\chosen\docsupport\prism.css" />
+    <Content Include="Scripts\chosen\docsupport\prism.js" />
+    <Content Include="Scripts\chosen\docsupport\prototype-1.7.0.0.js" />
+    <Content Include="Scripts\chosen\docsupport\style.css" />
+    <Content Include="Scripts\chosen\index.html" />
+    <Content Include="Scripts\chosen\index.proto.html" />
+    <Content Include="Scripts\chosen\options.html" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.foundation.js" />
@@ -518,7 +568,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -561,6 +613,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
+    <Content Include="Views\NewRentals\RentalForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -647,6 +700,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012290924254_AddAnnotationToPhone.resx">
       <DependentUpon>202012290924254_AddAnnotationToPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101040851085_modifyRentalFormModel.resx">
+      <DependentUpon>202101040851085_modifyRentalFormModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101041016045_modifyRentalClass.resx">
+      <DependentUpon>202101041016045_modifyRentalClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101050143006_modifyRentalClass1.resx">
+      <DependentUpon>202101050143006_modifyRentalClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101050232315_undoRentalClass.resx">
+      <DependentUpon>202101050232315_undoRentalClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
