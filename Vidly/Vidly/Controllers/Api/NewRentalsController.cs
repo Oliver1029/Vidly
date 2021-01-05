@@ -37,11 +37,10 @@ namespace Vidly.Controllers.Api
 
             var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
 
+            var movies = _context.Movies.Where(m => newRental.MovieId.Contains(m.Id));
 
-            foreach (var movieId in newRental.MovieId)
+            foreach (var movie in movies)
             {
-                var movie = _context.Movies.Single(m => m.Id == movieId);
-
                 var rental = new Rental()
                 {
                     Customer = customer,
@@ -51,9 +50,6 @@ namespace Vidly.Controllers.Api
 
                 _context.Rentals.Add(rental);
             }
-
-            //rental.DateRented = DateTime.Now;
-
             
             _context.SaveChanges();
 
