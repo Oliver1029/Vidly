@@ -37,10 +37,16 @@ namespace Vidly.Controllers.Api
 
             var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
 
-            var movies = _context.Movies.Where(m => newRental.MovieId.Contains(m.Id));
-
-            foreach (var movie in movies)
+            // let user rent same movie
+            foreach (var rentMovieId in newRental.MovieIds)
             {
+                var movie = _context.Movies.Single(m => m.Id == rentMovieId);
+
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available.");
+
+                movie.NumberAvailable--;
+
                 var rental = new Rental()
                 {
                     Customer = customer,
@@ -50,57 +56,34 @@ namespace Vidly.Controllers.Api
 
                 _context.Rentals.Add(rental);
             }
-            
+
             _context.SaveChanges();
 
             return Ok();
+
+            // user can't rent same movie
+            //var movies = _context.Movies.Where(m => newRental.MovieIds.Contains(m.Id)).ToList();
+
+            //foreach (var movie in movies)
+            //{
+            //    if (movie.NumberAvailable == 0)
+            //        return BadRequest("Movie is not available.");
+
+            //    movie.NumberAvailable--;
+
+            //    var rental = new Rental()
+            //    {
+            //        Customer = customer,
+            //        Movie = movie,
+            //        DateRented = DateTime.Now
+            //    };
+
+            //    _context.Rentals.Add(rental);
+            //}
+
+            //_context.SaveChanges();
+
+            //return Ok();
         }
-
-        //// POST /api/customers
-        //[HttpPost]
-        //public IHttpActionResult CreateRentalForm(RentalFormDto rentalFormDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest();
-
-        //    var rentalForm = Mapper.Map<RentalFormDto, RentalForm>(rentalFormDto);
-
-        //    _context.RentalForms.Add(rentalForm);
-        //    _context.SaveChanges();
-
-        //    rentalFormDto.Id = rentalForm.Id;
-
-        //    return Ok();
-        //}
-
-        //[HttpPost]
-        //public JsonResult SearchCustomer(string prefix)
-        //{
-        //    var allCustomers = _context.Customers.ToList();
-        //    var movies = _context.Movies.ToList();
-
-        //    //Searching records from list using LINQ query  
-        //    var customerList = (from c in allCustomers
-        //        where c.Name.StartsWith(prefix)
-        //        select new { c.Name });
-        //    return Json(customerList, JsonRequestBehavior.AllowGet);
-        //}
-
-
-        //[HttpPost]
-        //public IHttpActionResult CreateCustomer(CustomerDto customerDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest();
-
-        //    var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
-
-        //    _context.Customers.Add(customer);
-        //    _context.SaveChanges();
-
-        //    customerDto.Id = customer.Id;
-
-        //    return Ok();
-        //}
     }
 }

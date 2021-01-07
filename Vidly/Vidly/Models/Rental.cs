@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Permissions;
 using System.Web;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Vidly.Models
 {
