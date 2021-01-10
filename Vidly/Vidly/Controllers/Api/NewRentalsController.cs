@@ -51,7 +51,7 @@ namespace Vidly.Controllers.Api
                 {
                     Customer = customer,
                     Movie = movie,
-                    DateRented = DateTime.Now
+                    DateRented = DateTime.Now 
                 };
 
                 _context.Rentals.Add(rental);
